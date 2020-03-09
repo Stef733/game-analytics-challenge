@@ -1,0 +1,11 @@
+{
+  "name": "game-analytics-challenge",
+  "version": "1.0.0",
+  "description": "Coding Challenge for GameAnalytics",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Stefan Gagov",
+  "license": "UNLICENSED"
+}
