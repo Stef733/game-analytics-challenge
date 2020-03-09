@@ -15,14 +15,14 @@ describe('utils', () => {
     })
 
     it('should select by id', () => {
-      const query = '.idQuery'
+      const query = '#idQuery'
       const expectedResult = 'queried idQuery by id'
 
       const result = $(query)
       assert.equal(result, expectedResult)
     })
 
-    it('should select by id', () => {
+    it('should select by class', () => {
       const query = '.classNameQuery'
       const expectedResult = 'queried classNameQuery by class'
 

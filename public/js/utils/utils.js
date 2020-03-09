@@ -5,9 +5,9 @@ const $ = query => {
   const name = query.substring(1)
 
   switch (identifier) {
-    case '.':
-      return document.getElementById(name)
     case '#':
+      return document.getElementById(name)
+    case '.':
       return document.getElementsByClassName(name)
     default:
       return null

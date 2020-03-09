@@ -1,3 +1,3 @@
-import { getAllMovies } from './apiClient/index.js'
+import { getAllMovies } from './apiClient/methods.js'
 
 getAllMovies()
