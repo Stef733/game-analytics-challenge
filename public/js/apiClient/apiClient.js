@@ -1,13 +1,13 @@
 import bearerToken from './bearerToken.js'
 
-const BASE_URL = 'https://api.themoviedb.org/4'
+export const BASE_URL = 'https://api.themoviedb.org/4/'
 
 const authHeaders = {
   Authorization: 'Bearer ' + bearerToken,
   'Content-Type': 'application/json;charset=utf-8'
 }
 
-export const GET = (path, request) =>
+export const GET = (path, request = {}) =>
   fetch(BASE_URL + path, {
     ...request,
     headers: {
@@ -16,6 +16,7 @@ export const GET = (path, request) =>
     },
     type: 'GET'
   })
+    .then(response => response.json())
 
 export default {
   GET

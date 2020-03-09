@@ -1,3 +1,3 @@
-import { getAllMovies } from './apiClient/methods.js'
+import { showAllMovies } from './movieList/movieList.js'
 
-getAllMovies()
+showAllMovies()

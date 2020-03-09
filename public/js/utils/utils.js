@@ -1,4 +1,4 @@
-const $ = query => {
+export const $ = query => {
   if (typeof query !== 'string') return null
 
   const identifier = query.substring(0, 1)
@@ -12,8 +12,4 @@ const $ = query => {
     default:
       return null
   }
-}
-
-module.exports = {
-  $
 }

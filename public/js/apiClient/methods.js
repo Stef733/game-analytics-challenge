@@ -4,5 +4,5 @@ import apiClient from './apiClient.js'
 export const getAllMovies = (sortByVotes = false) => {
   const sortQueryParam = sortByVotes ? '&vote_average.desc' : ''
 
-  apiClient.GET(`list/1?page=1${sortQueryParam}`)
+  return apiClient.GET(`list/1?page=1${sortQueryParam}`)
 }
