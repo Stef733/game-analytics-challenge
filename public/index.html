@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>GameAnalytics Challenge</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="logo"><img class="logo__img" src="" alt="MovieDB Logo"></img></a>
+  </header>
+
+  <!-- TITLE AND SEARCH BOX -->
+  <h3 id="subtitle">THE MOVIE DB</h3>
+  <h1 id="title">Find any movie</h1>
+  <input type="text" id="search-input" name="search-input"></input>
+
+  <!-- Movie List -->
+  <div class="movie-list">
+    <div class="movie-list__description">
+      <h2 class="movie-list__title"></h2>
+      <h3 class="movie-list__subtitle"></h3>
+    </div>
+
+    <div class="movie-list__filter-buttons">
+      <select id="movies-sort-select" name="movies-sort-select" class="movie-list__sort-select">
+        <option value="none" default>No sorting</option>
+        <option value="votes">Vote value</option>
+      </select>
+
+      <select id="movies-filter-select" name="movies-filter-select" class="movie-list__filter-select">
+        <option value="all" default>All movies</option>
+        <option value="favourites">Favourites</option>
+      </select>
+    </div>
+  </div>
+</body>
+
+</html>
