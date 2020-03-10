@@ -1,0 +1,46 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #22323d;
+    margin: 0;
+    color: #ffffff;
+}
+
+header {
+    position: relative;
+    background-color: #081c24;
+    height: 100px;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#title {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1.8em;
+    font-weight: normal;
+}
+
+#subtitle {
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 30px;
+    font-size: 0.8em;
+}
+
+#search-input {
+    position: relative;
+    left: 50%;
+    width: 450px;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+    border-radius: 25px;
+    padding: 18px;
+}
+
+

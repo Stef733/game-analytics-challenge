@@ -1,0 +1,49 @@
+.movie-list {
+    width: 800px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.movie-list__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-list__description {
+    flex: 1;
+}
+
+.movie-list__filter-btns {
+    flex: 1;
+}
+
+.movie-list__filter-btn {
+    background-color: #00aa60;
+    border: none;
+    color: #ffffff;
+    padding: 0 8px;
+    width: 130px;
+    font-size: 0.8em;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.movie-list__movies {
+    list-style-type: none;
+    font-weight: 300;
+}
+
+.movie-list__movie-title {
+    font-weight: normal;
+}
+
+.movie-list__movie-wrapper {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.movie-list__description-wrapper {
+    padding: 0 20px;
+    background-color: #2a3a44;
+}
