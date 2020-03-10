@@ -42,9 +42,54 @@
 .movie-list__movie-wrapper {
     display: flex;
     margin-bottom: 10px;
+    background-color: #2a3a44;
 }
 
 .movie-list__description-wrapper {
     padding: 0 20px;
-    background-color: #2a3a44;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.movie-list__movie-year {
+    color: #79838a;
+    position: relative;
+    left: 10px;
+}
+
+.movie-list__img-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.movie-list__rating {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(0, 170, 96, 0.7);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.movie-list__movie-sidebar {
+    position: relative;
+    width: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+
+.movie-list__sidebar-btn {
+    padding: 0 5px;
+    color: #ffffff;
+    background: #00aa60;
+    margin-right: 10px;
+    height: 30px;
+    border: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }

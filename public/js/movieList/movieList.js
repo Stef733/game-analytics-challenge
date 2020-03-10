@@ -13,17 +13,20 @@ export const createMovieList = movies => {
     // eslint-disable-next-line camelcase
     release_date,
     overview,
-    popularity,
     // eslint-disable-next-line camelcase
-    poster_path
+    vote_average,
+    // eslint-disable-next-line camelcase
+    poster_path,
+    id
   }) => {
     createMovieListItem({
       title: original_title,
       year: release_date.substr(0, 4),
       description: overview,
-      rating: popularity,
+      rating: vote_average,
       // eslint-disable-next-line camelcase
-      imageHref: IMAGE_BASE_URL + poster_path
+      imageHref: IMAGE_BASE_URL + poster_path,
+      id
     })
   })
 }
@@ -51,7 +54,7 @@ export const showAllMovies = () => {
 
 const showFavourites = () => {
   const movies = getItemFromStore('movies') || []
-  const favouriteMovies = movies.filter(movie => getItemFromStore('favouriteMovieIds').get(movie.id))
+  const favouriteMovies = movies.filter(movie => getItemFromStore('favourites').has(movie.id))
 
   createMovieList(favouriteMovies)
   updateMovieListCount(movies.length, 6)
