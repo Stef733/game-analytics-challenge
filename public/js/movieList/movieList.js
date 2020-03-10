@@ -1,52 +1,12 @@
-import { $ } from '../utils/utils.js'
-import { getAllMovies } from '../apiClient/methods.js'
+import { $, getItemFromStore } from '../utils/utils.js'
+
+import { createMovieListItem } from './movieListItem.js'
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w92'
 
-const createMovieListElement = ({
-  title,
-  year,
-  description,
-  imageHref,
-  rating
-}) => {
-  // Create DOM nodes
-  const wrapperDiv = document.createElement('DIV')
-  wrapperDiv.classList.add('movie-list__movie-wrapper')
+export const createMovieList = movies => {
+  $('.movie-list__movies')[0].innerHTML = ''
 
-  const posterImg = document.createElement('IMG')
-  posterImg.classList.add('movie-list__movie-image')
-  posterImg.setAttribute('src', imageHref)
-  posterImg.setAttribute('alt', 'Poster for ' + title)
-
-  const descriptionWrapperDiv = document.createElement('DIV')
-  descriptionWrapperDiv.classList.add('movie-list__description-wrapper')
-
-  const titleH2 = document.createElement('H2')
-  titleH2.classList.add('movie-list__movie-title')
-  titleH2.appendChild(document.createTextNode(title))
-
-  const yearSpan = document.createElement('SPAN')
-  yearSpan.classList.add('movie-list__movie-year')
-  yearSpan.appendChild(document.createTextNode(`(${year})`))
-
-  const movieDescriptionP = document.createElement('P')
-  movieDescriptionP.classList.add('movie-list__movie-description')
-  movieDescriptionP.appendChild(document.createTextNode(description))
-
-  // Assemble DOM nodes
-  wrapperDiv.appendChild(posterImg)
-  wrapperDiv.appendChild(descriptionWrapperDiv)
-  descriptionWrapperDiv.appendChild(titleH2)
-  titleH2.appendChild(yearSpan)
-  descriptionWrapperDiv.appendChild(movieDescriptionP)
-
-  // Attach to root node
-  const moviesList = $('.movie-list__movies')[0]
-  moviesList.appendChild(wrapperDiv)
-}
-
-const createMovieList = movies => {
   movies.forEach(({
     // eslint-disable-next-line camelcase
     original_title,
@@ -57,7 +17,7 @@ const createMovieList = movies => {
     // eslint-disable-next-line camelcase
     poster_path
   }) => {
-    createMovieListElement({
+    createMovieListItem({
       title: original_title,
       year: release_date.substr(0, 4),
       description: overview,
@@ -75,12 +35,49 @@ const updateMovieListCount = (showing, total) => {
   subtitleEl.appendChild(subtitleTextNode)
 }
 
-export const showAllMovies = () => {
-  getAllMovies()
-    .then(data => {
-      const movies = data.results.splice(0, 6)
+const sortByVotes = () => {
+  const movies = getItemFromStore('movies') || []
 
-      if (movies.length) createMovieList(movies)
-      updateMovieListCount(movies.length, 6)
-    })
+  const sortedMovies = movies.sort((movieA, movieB) => movieA.popularity - movieB.popularity)
+  createMovieList(sortedMovies)
+}
+
+export const showAllMovies = () => {
+  const movies = getItemFromStore('movies') || []
+
+  createMovieList(movies)
+  updateMovieListCount(movies.length, 6)
+}
+
+const showFavourites = () => {
+  const movies = getItemFromStore('movies') || []
+  const favouriteMovies = movies.filter(movie => getItemFromStore('favouriteMovieIds').get(movie.id))
+
+  createMovieList(favouriteMovies)
+  updateMovieListCount(movies.length, 6)
+}
+
+const handleSortChange = e => {
+  switch (e.target.value) {
+    case 'votes':
+      sortByVotes()
+      break
+    default:
+      showAllMovies()
+  }
+}
+
+const handleFilterChange = e => {
+  switch (e.target.value) {
+    case 'favourites':
+      showFavourites()
+      break
+    default:
+      showAllMovies()
+  }
+}
+
+export const attachMovieListButtonHandlers = () => {
+  $('#movies-sort-select').addEventListener('change', handleSortChange)
+  $('#movies-filter-select').addEventListener('change', handleFilterChange)
 }

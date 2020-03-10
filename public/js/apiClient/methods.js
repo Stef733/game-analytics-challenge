@@ -1,8 +1,10 @@
 import apiClient from './apiClient.js'
 
 // In a real world scenario there would be pagination and page arguments here
-export const getAllMovies = (sortByVotes = false) => {
-  const sortQueryParam = sortByVotes ? '&vote_average.desc' : ''
+export const getAllMovies = () => {
+  return apiClient.GET('4/list/1?page=1')
+}
 
-  return apiClient.GET(`list/1?page=1${sortQueryParam}`)
+export const searchForMovies = (query = '') => {
+  return apiClient.GET(`3/search/movie?query=${encodeURIComponent(query)}`)
 }

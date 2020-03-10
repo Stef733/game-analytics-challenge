@@ -1,6 +1,6 @@
 import bearerToken from './bearerToken.js'
 
-export const BASE_URL = 'https://api.themoviedb.org/4/'
+export const BASE_URL = 'https://api.themoviedb.org/'
 
 const authHeaders = {
   Authorization: 'Bearer ' + bearerToken,
