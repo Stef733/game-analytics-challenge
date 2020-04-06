@@ -1,3 +1,5 @@
+3 hour vanilla JS exercise for Game Analytics
+
 # game-analytics-challenge
 
 **To setup**
